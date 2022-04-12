@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _2DGameFramework
+﻿namespace _2DGameFramework.Model.World.Objects
 {
     public class WorldObject
     {

@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _2DGameFramework
+namespace _2DGameFramework.Factory
 {
-    internal class Position
+    public enum CritterType
     {
+        RABBIT,
+        SQUIRREL,
+        FOX,
+        CHICKEN
     }
 }

@@ -1,0 +1,17 @@
+StateMachine table : player actions, creature actions
+
+Abstract factory : creature factory, loot factory, tree factory
+
+Decorator pattern? Boost a weapon or creature for a period.
+
+Composite pattern? Hold creature items. Then it dosn't matter if one or many.
+
+Small Program =
+main()
+{
+Create c1 = new creature
+Create c2 = new creature
+	c1.hit(c2)
+DecoratorCreature dc = new decoratorCreature(c1)
+	dc.hit(c2)
+}
