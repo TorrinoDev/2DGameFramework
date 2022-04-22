@@ -8,7 +8,7 @@ namespace _2DGameFramework.Model.Creatures.Race
         private static Elven instance = null;
         private static readonly object padlock = new object();
 
-        Elven()
+        private Elven()
         {
         }
 

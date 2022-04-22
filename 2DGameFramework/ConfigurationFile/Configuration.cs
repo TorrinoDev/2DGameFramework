@@ -18,7 +18,7 @@ namespace _2DGameFramework.ConfigurationFile
     public class Configuration
     {
 
-        public static void ReadConfiguration(TraceSource ts)
+        public static List<Enemy> ReadConfiguration(TraceSource ts)
         {
             var filename = "Config.xml";
             var currentDirectory = Directory.GetCurrentDirectory();
@@ -38,6 +38,8 @@ namespace _2DGameFramework.ConfigurationFile
                 Console.WriteLine(temp);
                 enemyList.Add((Enemy)temp);
             }
+
+            return enemyList;
         }
 
 

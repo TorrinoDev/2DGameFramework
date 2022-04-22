@@ -22,18 +22,19 @@ namespace SmallProgram
         {
             Tracer tracer = new Tracer(ts);
             PlayerCreation(AbstractFactory.GetFactory(CreatureType.PLAYER, ts));
-            /*EnemyCreation(AbstractFactory.GetFactory(CreatureType.ENEMY, ts));
+            EnemyCreation(AbstractFactory.GetFactory(CreatureType.ENEMY, ts));
             enemies[0].Inventory.Add((new Sword()));
             enemies[0].Inventory.Add((new Shield()));
             enemies[1].Inventory.Add((new Spear()));
             enemies[1].Inventory.Add((new Helmet()));
-            Configuration.CreateConfigurationFile(enemies);*/
-            Configuration.ReadConfiguration(ts);
+            //Configuration.CreateConfigurationFile(enemies);
+            //Configuration.ReadConfiguration(ts);
+            
         }
 
         public void PlayerCreation(IFactory factory)
         {
-            var player1 = factory.GetCreature(RaceType.HUMAN);
+            var player1 = (Player)factory.GetCreature(RaceType.HUMAN);
             Console.WriteLine(player1.ToString());
 
         }
