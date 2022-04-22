@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,17 +18,14 @@ namespace _2DGameFramework.ConfigurationFile
     public class Configuration
     {
 
-        
-
-        public static void ReadConfiguration()
+        public static void ReadConfiguration(TraceSource ts)
         {
             var filename = "Config.xml";
             var currentDirectory = Directory.GetCurrentDirectory();
             var filePath = Path.Combine(currentDirectory, filename);
 
             List<Enemy> enemyList = new List<Enemy>();
-            Enemy enemy;
-            PlayerFactory factory = new PlayerFactory();
+            EnemyFactory factory = new EnemyFactory(ts);
 
             XDocument doc = XDocument.Load(filePath);
             IEnumerable<string> enemies = from e in doc.Descendants("Enemy") select e.Element("Race").Value;

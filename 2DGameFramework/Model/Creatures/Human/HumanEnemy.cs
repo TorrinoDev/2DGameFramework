@@ -8,6 +8,10 @@ namespace _2DGameFramework.Model.Creatures.Human
 {
     public class HumanEnemy : Enemy
     {
+        /// <summary>
+        /// Create a Human Enemy Creature
+        /// </summary>
+        /// <param name="h">Human Singleton that modifies stats to the human race</param>
         public HumanEnemy(Race.Human h)
         {
             Race = h.Race;

@@ -2,6 +2,7 @@
 using _2DGameFramework.Interface;
 using _2DGameFramework.Model.Creatures.Race;
 using _2DGameFramework.Model.Items;
+using _2DGameFramework.Model.World.Objects;
 
 namespace _2DGameFramework.Model.Creatures
 {
@@ -13,6 +14,7 @@ namespace _2DGameFramework.Model.Creatures
         private int defense = 10;
         private int evasion = 20;
         private List<Item> inventory = new List<Item>();
+        private bool dead = false;
 
         private double healthModifier;
         private double attackModifier;
@@ -30,24 +32,41 @@ namespace _2DGameFramework.Model.Creatures
         public double DefenseModifier { get => defenseModifier; set => defenseModifier = value; }
         public double EvasionModifier { get => evasionModifier; set => evasionModifier = value; }
         public List<Item> Inventory { get => inventory; set => inventory = value; }
+        public bool Dead { get => dead; set => dead = value; }
 
         private Random random = new Random();
 
+        /// <summary>
+        /// Try to attack and damage an adversary
+        /// </summary>
+        /// <param name="enemy">The adversary</param>
         public void Attack(Creature enemy)
         {
             int hitBox = 100;
-            if (RNG(hitBox, enemy.Evasion))
+            int diceRoll = random.Next(hitBox + 1);
+            if (diceRoll < enemy.evasion)
             {
                 RecieveDamage(enemy);
             }
-
         }
 
+        /// <summary>
+        /// Damage an adversary
+        /// </summary>
+        /// <param name="enemy">The adversary</param>
         public void RecieveDamage(Creature enemy)
         {
             enemy.Hitpoints -= (attackDamage * (Defense / 100));
+            if (enemy.Hitpoints <= 0)
+            {
+                enemy.Dead = true;
+            };
         }
 
+        /// <summary>
+        /// Loot all items
+        /// </summary>
+        /// <param name="c">The Creature to loot</param>
         public void Loot(Creature c)
         {
             if (c.Inventory != null)
@@ -59,16 +78,19 @@ namespace _2DGameFramework.Model.Creatures
             }
         }
 
-        private bool RNG(int max, int threshold)
+        /// <summary>
+        /// Loot all items
+        /// </summary>
+        /// <param name="o">The WorldObject to loot</param>
+        public void Loot(WorldObject o)
         {
-           int diceRoll = random.Next(max + 1);
-
-           if (diceRoll < threshold)
-           {
-               return false;
-           }
-
-           return true;
+            if (o.Lootable)
+            {
+                foreach (var item in o.Loot)
+                {
+                    Inventory.Add(item);
+                }
+            }
         }
 
         public override string ToString()

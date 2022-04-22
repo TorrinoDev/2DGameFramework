@@ -7,8 +7,10 @@ namespace _2DGameFramework.Model.Creatures
     {
         private string name;
 
+        /// <summary>
+        /// Get or Set the name of the Player
+        /// </summary>
         public string Name { get => name; set => name = value; }
-        
 
     }
 }

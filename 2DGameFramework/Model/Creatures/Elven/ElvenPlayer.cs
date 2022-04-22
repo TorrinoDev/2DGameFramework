@@ -10,6 +10,10 @@ namespace _2DGameFramework.Model.Creatures.Elven
 {
     public class ElvenPlayer : Player
     {
+        /// <summary>
+        /// Create an Elven Player Creature
+        /// </summary>
+        /// <param name="e">Elven Singleton that modifies stats to the elven race</param>
         public ElvenPlayer(Race.Elven e)
         {
             Race = e.Race;

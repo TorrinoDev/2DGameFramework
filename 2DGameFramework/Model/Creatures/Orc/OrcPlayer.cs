@@ -8,6 +8,11 @@ namespace _2DGameFramework.Model.Creatures.Orc
 {
     public class OrcPlayer : Player
     {
+
+        /// <summary>
+        /// Create an Orc Player Creature
+        /// </summary>
+        /// <param name="o">Orc Singleton that modifies stats to the orc race</param>
         public OrcPlayer(Race.Orc o)
         {
             Race = o.Race;

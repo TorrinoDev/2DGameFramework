@@ -1,4 +1,5 @@
-﻿using _2DGameFramework.Interface;
+﻿using _2DGameFramework.Enum;
+using _2DGameFramework.Interface;
 
 namespace _2DGameFramework.State
 {

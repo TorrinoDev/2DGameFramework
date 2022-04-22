@@ -1,25 +1,11 @@
-﻿namespace _2DGameFramework.Interface
+﻿using _2DGameFramework.Enum;
+using _2DGameFramework.State;
+
+namespace _2DGameFramework.Interface
 {
     public interface IState
     {
         Move NextMove(InputType input);
     }
-
-    public enum CreatureHeadingStatesType
-    {
-        NORTH,
-        SOUTH,
-        EAST,
-        WEST
-    }
-
-    public enum InputType
-    {
-        FORWARD,
-        BACKWARD,
-        LEFT,
-        RIGHT
-    }
-
-    public record Move(int row, int col);
+    
 }

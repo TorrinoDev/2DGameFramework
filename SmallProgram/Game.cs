@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,22 +10,25 @@ using _2DGameFramework.Interface;
 using _2DGameFramework.Model.Creatures;
 using _2DGameFramework.Model.Items.Armour;
 using _2DGameFramework.Model.Items.Weapons;
+using _2DGameFramework.Tracing;
 
 namespace SmallProgram
 {
     public class Game
     {
         List<Enemy> enemies = new List<Enemy>();
+        private TraceSource ts = new TraceSource("Game Demo");
         public void Start()
         {
-            PlayerCreation(new PlayerFactory());
-            /*EnemyCreation(new EnemyFactory());
+            Tracer tracer = new Tracer(ts);
+            PlayerCreation(AbstractFactory.GetFactory(CreatureType.PLAYER, ts));
+            /*EnemyCreation(AbstractFactory.GetFactory(CreatureType.ENEMY, ts));
             enemies[0].Inventory.Add((new Sword()));
             enemies[0].Inventory.Add((new Shield()));
             enemies[1].Inventory.Add((new Spear()));
             enemies[1].Inventory.Add((new Helmet()));
             Configuration.CreateConfigurationFile(enemies);*/
-            Configuration.ReadConfiguration();
+            Configuration.ReadConfiguration(ts);
         }
 
         public void PlayerCreation(IFactory factory)
